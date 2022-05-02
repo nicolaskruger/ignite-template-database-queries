@@ -45,7 +45,7 @@ export class migration1616108470200 implements MigrationInterface {
       'CREATE INDEX "IDX_FFB6C55E10E291375E968E9852" ON "orders_games_games" ("ordersId") ',
     )
     await queryRunner.query(
-      'CREATE INDEX "IDX_FFB6C55E10E291375E968E9852" ON "orders_games_games" ("gamesId") ',
+      'CREATE INDEX "IDX_FFB6C55E10E291375E968E9853" ON "orders_games_games" ("gamesId") ',
     )
     // constraint
     await queryRunner.query(
@@ -85,15 +85,30 @@ export class migration1616108470200 implements MigrationInterface {
     await queryRunner.query(
       'ALTER TABLE "genres_games_games" DROP CONSTRAINT "FK_e5263d029d8644de829aae5c352"',
     );
+    await queryRunner.query(
+      'ALTER TABLE "orders" DROP CONSTRAINT "FK_e5263d029d8644de829aae5c353"',
+    );
+    await queryRunner.query(
+      'ALTER TABLE "orders_games_games" DROP CONSTRAINT "FK_e5263d029d8644de829aae5c354"',
+    );
+    await queryRunner.query(
+      'ALTER TABLE "orders_games_games" DROP CONSTRAINT "FK_e5263d029d8644de829aae5c355"',
+    );
     await queryRunner.query('DROP INDEX "IDX_934b0d8f9d0084c97d3876ad32"');
     await queryRunner.query('DROP INDEX "IDX_e5263d029d8644de829aae5c35"');
     await queryRunner.query('DROP INDEX "IDX_C183FFFB6C55E10E291375E968"');
     await queryRunner.query('DROP INDEX "IDX_FFB6C55E10E291375E968E985F"');
+    await queryRunner.query('DROP INDEX "IDX_FFB6C55E10E291375E968E9851"');
+    await queryRunner.query('DROP INDEX "IDX_FFB6C55E10E291375E968E9851"');
+    await queryRunner.query('DROP INDEX "IDX_FFB6C55E10E291375E968E9852"');
+    await queryRunner.query('DROP INDEX "IDX_FFB6C55E10E291375E968E9853"');
     await queryRunner.query('DROP TABLE "users_games_games"');
     await queryRunner.query('DROP TABLE "genres_games_games"');
+    await queryRunner.query('DROP TABLE "orders_games_games"');
     await queryRunner.query('DROP TABLE "games"');
     await queryRunner.query('DROP TABLE "users"');
     await queryRunner.query('DROP TABLE "genres"');
+    await queryRunner.query('DROP TABLE "orders"');
     
   }
 }
